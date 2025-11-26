@@ -24,7 +24,7 @@ const VideoPlayer = ({ video, course, module }) => {
     // But since we are in dev, we might need full path or proxy.
     // Let's use a relative path and assume we'll set up a proxy or run on same origin in prod.
     // For dev, we can hardcode or use env var.
-    const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const API_BASE = import.meta.env.VITE_API_URL || '';
 
     const videoSrc = `${API_BASE}/api/video/${encodedCourse}/${encodedModule}/${encodedFilename}`;
     const subtitleSrc = `${API_BASE}/api/subtitles/${encodedCourse}/${encodedModule}/${encodedSubtitle}`;
