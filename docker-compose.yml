@@ -3,6 +3,7 @@ version: '3.8'
 services:
   course-manager:
     build: .
+    image: video-course-manager:latest
     container_name: video-course-manager
     ports:
       - "6111:3000"
@@ -10,7 +11,21 @@ services:
       - /DATA/Downloads/complete:/courses:ro
     restart: unless-stopped
 
-
-
-
-
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+    - arm
+  main: course-manager
+  description:
+    en_us: A simple video course manager and player.
+  tagline:
+    en_us: Watch your local video courses.
+  developer: Self
+  author: Self
+  icon: https://cdn-icons-png.flaticon.com/512/2989/2989835.png
+  thumbnail: https://cdn-icons-png.flaticon.com/512/2989/2989835.png
+  title:
+    en_us: Course Manager
+  category: Media
+  port_map: "6111"
