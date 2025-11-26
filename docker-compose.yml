@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  course-manager:
+    build: .
+    container_name: video-course-manager
+    ports:
+      - "6111:3000"
+    volumes:
+      - ./courses:/courses:ro
+    restart: unless-stopped
