@@ -9,17 +9,17 @@ RUN npm ci
 COPY frontend/ .
 RUN npm run build
 
-# Stage 2: Setup Backend
-FROM node:18-alpine
+# Stage 2: Setup Backend (Go)
+FROM golang:1.21-alpine
 
 WORKDIR /app
 
-# Install backend dependencies
-COPY backend/package*.json ./
-RUN npm ci --only=production
-
 # Copy backend code
 COPY backend/ .
+
+# Build Go application
+RUN go mod download
+RUN go build -o video-course-manager .
 
 # Copy built frontend assets to 'public' directory in backend
 COPY --from=frontend-build /app/frontend/dist ./public
@@ -28,10 +28,9 @@ COPY --from=frontend-build /app/frontend/dist ./public
 RUN mkdir -p /courses
 
 # Environment variables
-ENV NODE_ENV=production
 ENV PORT=3000
 ENV COURSES_PATH=/courses
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+CMD ["./video-course-manager"]
