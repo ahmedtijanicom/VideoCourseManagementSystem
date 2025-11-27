@@ -1,6 +1,6 @@
 # Video Course Management System
 
-A self-hosted, filesystem-based video course management system that automatically discovers and organizes educational content. It features a modern React frontend with a Node.js backend, packaged in a single Docker container.
+A self-hosted, filesystem-based video course management system that automatically discovers and organizes educational content. It features a modern React frontend with a high-performance Go backend, packaged in a single Docker container.
 
 ## Features
 
@@ -63,9 +63,9 @@ docker-compose down
 ## Development
 
 ### Backend
-- **Stack**: Node.js, Express
+- **Stack**: Go (Golang)
 - **Location**: `backend/`
-- **Run Locally**: `cd backend && npm install && npm start`
+- **Run Locally**: `cd backend && go run main.go`
 
 ### Frontend
 - **Stack**: React, Vite
